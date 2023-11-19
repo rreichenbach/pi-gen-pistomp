@@ -44,8 +44,8 @@ adduser ${FIRST_USER_NAME} jack --quiet
 adduser root jack --quiet
 adduser jack audio --quiet
 
-ln -s /home/${FIRST_USER_NAME}/data/.pedalboards ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.pedalboards
-ln -s /home/${FIRST_USER_NAME}/.lv2 ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/data/.lv2
+ln -s /home/${FIRST_USER_NAME}/data/.pedalboards /home/${FIRST_USER_NAME}/.pedalboards
+ln -s /home/${FIRST_USER_NAME}/.lv2 /home/${FIRST_USER_NAME}/data/.lv2
 
 EOF
 
