@@ -1,12 +1,10 @@
-ssh less fbset sudo psmisc strace ed ncdu crda
+ssh less fbset sudo git psmisc strace ed ncdu crda 
 console-setup keyboard-configuration debconf-utils parted
 build-essential manpages-dev bash-completion gdb pkg-config
-python-is-python3
+python-is-python3 python3-zeroconf python3-zeroconf
 python3-rpi.gpio v4l-utils
-python3-gpiozero
+python3-gpiozero python3-liblo
 avahi-daemon
-lua5.1
-luajit
 hardlink ca-certificates curl
 fake-hwclock nfs-common usbutils
 libraspberrypi-dev libraspberrypi-doc libfreetype6-dev
@@ -26,11 +24,20 @@ policykit-1
 ssh-import-id
 rng-tools
 ethtool
-ntfs-3g
 pciutils
 rpi-eeprom
 raspinfo
 udisks2
 unzip zip p7zip-full
-file
-kms++-utils
+virtualenv python3-pip python3-dev
+libasound2-dev libjack-jackd2-dev liblilv-dev 
+libjpeg-dev zlib1g-dev cmake debhelper dh-autoreconf dh-python 
+gperf intltool ladspa-sdk libarmadillo-dev libasound2-dev 
+libavahi-gobject-dev libavcodec-dev libavutil-dev libbluetooth-dev 
+libboost-dev libeigen3-dev libfftw3-dev libglib2.0-dev libglibmm-2.4-dev 
+libgtk2.0-dev libgtkmm-2.4-dev liblilv-dev liblrdf0-dev libsamplerate0-dev 
+libsigc++-2.0-dev libsndfile1-dev libsndfile1-dev libzita-convolver-dev 
+libzita-resampler-dev lv2-dev python3-all python3-setuptools 
+libreadline-dev zita-alsa-pcmi-utils hostapd dnsmasq iptables python3-smbus 
+liblo-dev libzita-alsa-pcmi-dev authbind python3-numpy
+libserd-dev libsord-dev libsratom-dev rcconf python3-zeroconf
