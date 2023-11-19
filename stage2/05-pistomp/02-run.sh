@@ -3,8 +3,8 @@
 echo "Installing MOD software"
 on_chroot << EOF
 
-mkdir -p ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp
-cd ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp
+mkdir -p /home/${FIRST_USER_NAME}/tmp
+cd /home/${FIRST_USER_NAME}/tmp
 
 git clone https://github.com/moddevices/jack2.git
 cd jack2
