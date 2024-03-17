@@ -67,5 +67,7 @@ cd lilv-0.24.12
 ./waf install
 cd ..
 
+rm -rf /home/${FIRST_USER_NAME}/tmp
+
 EOF
 

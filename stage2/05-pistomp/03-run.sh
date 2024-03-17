@@ -6,7 +6,7 @@ install -m 644 files/hotspot/usr/lib/pistomp-wifi/enable_wifi_hotspot.sh ${ROOTF
 install -m 644 files/hotspot/etc/default/hostapd.pistomp ${ROOTFS_DIR}/etc/default/
 install -m 644 files/hotspot/etc/dnsmasq.d/wifi-hotspot.conf ${ROOTFS_DIR}/etc/dnsmasq.d/
 install -m 644 files/hotspot/etc/hostapd/hostapd.conf ${ROOTFS_DIR}/etc/hostapd/
-install -m 644 files/config_templates/default_config.yml ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/data/configs/
+install -m 644 files/config_templates/default_config.yml ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/data/config/
 
 echo "Installing MOD software"
 on_chroot << EOF
@@ -60,7 +60,13 @@ bash -c "sed -i \"s/^\s*#dtparam=i2s=on/dtparam=i2s=on/\" ${ROOTFS_DIR}/boot/con
 bash -c "sed -i \"s/^\s*#dtparam=i2c_arm=on/dtparam=i2c_arm=on/\" ${ROOTFS_DIR}/boot/config.txt"
 
 cat >> ${ROOTFS_DIR}/boot/config.txt <<EOF
+# enable the sound card (uncomment only one)
+#dtoverlay=audioinjector-wm8731-audio
+dtoverlay=iqaudio-codec
+#dtoverlay=hifiberry-dacplusadc
+EOF
 
+cat >> ${ROOTFS_DIR}/boot/config.txt <<EOF
 # pi-stomp additions to allow DIN Midi, disables bluetooth however
 enable_uart=1
 dtoverlay=pi3-disable-bt
@@ -89,16 +95,8 @@ arm_64bit=1
 [pi4]
 EOF
 
-cat >> ${ROOTFS_DIR}/boot/config.txt <<EOF
-
-# enable the sound card (uncomment only one)
-#dtoverlay=audioinjector-wm8731-audio
-dtoverlay=iqaudio-codec
-#dtoverlay=hifiberry-dacplusadc
-EOF
-
 cat >> ${ROOTFS_DIR}/etc/rc.local <<EOF
-
+/home/pistomp/first-run.sh
 sudo alsactl restore -f /var/lib/alsa/asound.state
 (sleep 10;/etc/wpa_supplicant/wifi_check.sh) &
 exit 0

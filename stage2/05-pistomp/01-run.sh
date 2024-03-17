@@ -1,8 +1,8 @@
 #!/bin/bash
 
-install -m 644 files/services/*.service ${ROOTFS_DIR}/usr/lib/systemd/system/
-install -m 644 files/jackdrc ${ROOTFS_DIR}/etc/
-install -m 644 files/80 ${ROOTFS_DIR}/etc/authbind/byport/
+install -m 666 files/services/*.service ${ROOTFS_DIR}/usr/lib/systemd/system/
+install -m 666 files/jackdrc ${ROOTFS_DIR}/etc/
+install -m 666 files/80 ${ROOTFS_DIR}/etc/authbind/byport/
 
 echo "Creating folders and services"
 on_chroot << EOF
@@ -18,7 +18,7 @@ git clone https://github.com/treefallsound/pi-stomp.git /home/${FIRST_USER_NAME}
 
 mkdir -p /home/${FIRST_USER_NAME}/data/.pedalboards
 mkdir -p /home/${FIRST_USER_NAME}/data/user-files
-mkdir -p /home/${FIRST_USER_NAME}/data/configs
+mkdir -p /home/${FIRST_USER_NAME}/data/config
 mkdir -p /usr/mod/scripts
 mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Speaker Cabinets IRs"
 mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Reverb IRs"
@@ -55,6 +55,9 @@ git clone https://github.com/TreeFallSound/pi-stomp-pedalboards.git /home/${FIRS
 
 ln -s /home/${FIRST_USER_NAME}/data/.pedalboards /home/${FIRST_USER_NAME}/.pedalboards
 ln -s /home/${FIRST_USER_NAME}/.lv2 /home/${FIRST_USER_NAME}/data/.lv2
+
+rm /home/${FIRST_USER_NAME}/data/.pedalboards LICENSE README.md
+rm -rf /home/${FIRST_USER_NAME}/data/.pedalboards/.git
 
 EOF
 
