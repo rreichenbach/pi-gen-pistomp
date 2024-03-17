@@ -20,7 +20,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4.2.0
 
     - name: APT update
       run: |
@@ -38,14 +38,14 @@ jobs:
       run: ls -lh deploy
 
     - name: Upload built image
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: built-image
         path: ./deploy/image_*pistompOS-tre-lite.img.xz
         if-no-files-found: error
 
     - name: Upload debug artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: debug-files
         path: | 
@@ -58,10 +58,10 @@ jobs:
     needs: [build]
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: built-image
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         with:
           files: '**/*'
         env:
