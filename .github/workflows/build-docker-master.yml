@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: built-image
-        path: ./deploy/image_*pistompOS.img.xz
+        path: ./deploy/image_*pistompOS-lite.img.xz
         if-no-files-found: error
 
     - name: Upload debug artifacts
@@ -49,7 +49,7 @@ jobs:
       with:
         name: debug-files
         path: | 
-          ./deploy/*pistompOS.info
+          ./deploy/*pistompOS-lite.info
           ./deploy/build.log
         if-no-files-found: error
   
