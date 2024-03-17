@@ -20,9 +20,9 @@ wget https://github.com/kdoren/linux/releases/download/rpi_6.1.54-rt15/linux-ima
 wget https://github.com/kdoren/linux/releases/download/rpi_6.1.54-rt15/linux-libc-dev_6.1.54-1_arm64.deb
 
 dpkg -i linux-image-5.15.65-rt49-v8+_5.15.65-1_arm64.deb
-dpkg -i linux-image-6.1.54-rt15-v8+_6.1.54-rt15-v8+-2_arm64.deb
-dpkg -i linux-libc-dev_6.1.54-rt15-v8+-2_arm64.deb
-dpkg -i linux-headers-6.1.54-rt15-v8+_6.1.54-rt15-v8+-2_arm64.deb
+dpkg -i linux-image-6.1.54-rt15-v8+_6.1.54-1_arm64.deb
+dpkg -i linux-libc-dev_6.1.54-1_arm64.deb
+dpkg -i linux-headers-6.1.54-rt15-v8+_6.1.54-1_arm64.deb
 
 KERN1=5.15.65-rt49-v8+
 mkdir -p /boot/$KERN1/o/
