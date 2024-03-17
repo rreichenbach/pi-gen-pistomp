@@ -12,6 +12,7 @@ git clone https://github.com/treefallsound/pi-stomp.git /home/${FIRST_USER_NAME}
 
 mkdir -p /home/${FIRST_USER_NAME}/data/.pedalboards
 mkdir -p /home/${FIRST_USER_NAME}/data/user-files
+mkdir -p /home/${FIRST_USER_NAME}/data/configs
 mkdir -p /usr/mod/scripts
 mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Speaker Cabinets IRs"
 mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Reverb IRs"
