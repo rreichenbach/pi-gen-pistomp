@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
 install -m 644 files/sys/.bash_aliases ${ROOTFS_DIR}/home/${FIRST_USER_NAME}
-install -m 644 files/hotspot/usr/lib/pistomp-wifi ${ROOTFS_DIR}/usr/lib/pistomp-wifi
+install -m 644 files/hotspot/usr/lib/pistomp-wifi/disable_wifi_hotspot.sh ${ROOTFS_DIR}/usr/lib/pistomp-wifi
+install -m 644 files/hotspot/usr/lib/pistomp-wifi/enable_wifi_hotspot.sh ${ROOTFS_DIR}/usr/lib/pistomp-wifi
 install -m 644 files/hotspot/etc/default/hostapd.pistomp ${ROOTFS_DIR}/etc/default/
 install -m 644 files/hotspot/etc/dnsmasq.d/wifi-hotspot.conf ${ROOTFS_DIR}/etc/dnsmasq.d/
 install -m 644 files/hotspot/etc/hostapd/hostapd.conf ${ROOTFS_DIR}/etc/hostapd/

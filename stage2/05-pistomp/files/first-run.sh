@@ -12,6 +12,8 @@ if [ ! -e ~/.config/pistomp-first-run ]; then
 	sudo chown jack:jack /etc/jackdrc
 	sudo chmod 500 /etc/authbind/byport/80
 	sudo chown pistomp:pistomp /etc/authbind/byport/80
+	sudo chown -R pistomp:pistomp /usr/lib/pistomp-wifi
+	sudo chmod +x -R /usr/lib/pistomp-wifi
 	/home/pistomp/pi-stomp/setup/pi-stomp-tweaks/modify_version.sh 2.0
 	/home/pistomp/pi-stomp/util/change-audio-card.sh iqaudio-codec
 	ln -sf /usr/lib/systemd/system/browsepy.service /etc/systemd/system/multi-user.target.wants
@@ -23,5 +25,6 @@ if [ ! -e ~/.config/pistomp-first-run ]; then
 	ln -sf /usr/lib/systemd/system/mod-midi-merger.service /etc/systemd/system/multi-user.target.wants
 	ln -sf /usr/lib/systemd/system/mod-midi-merger-broadcaster.service /etc/systemd/system/multi-user.target.wants
 	ln -sf /usr/lib/systemd/system/mod-ala-pi-stomp.service /etc/systemd/system/multi-user.target.wants
+	sudo raspi-config nonint do_boot_wait 1
 	clear && cat /run/motd.dynamic
 fi
