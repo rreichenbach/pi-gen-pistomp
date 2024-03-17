@@ -25,26 +25,26 @@ dpkg -i linux-libc-dev_6.1.54-1_arm64.deb
 dpkg -i linux-headers-6.1.54-rt15-v8+_6.1.54-1_arm64.deb
 
 KERN1=5.15.65-rt49-v8+
-mkdir -p /boot/$KERN1/o/
-cp -d /usr/lib/linux-image-$KERN1/overlays/* /boot/$KERN1/o/
-cp -dr /usr/lib/linux-image-$KERN1/* /boot/$KERN1/
-cp -d /usr/lib/linux-image-$KERN1/broadcom/* /boot/$KERN1/
-touch /boot/$KERN1/o/README
-mv /boot/vmlinuz-$KERN1 /boot/$KERN1/
-mv /boot/initrd.img-$KERN1 /boot/$KERN1/
-mv /boot/System.map-$KERN1 /boot/$KERN1/
-cp /boot/config-$KERN1 /boot/$KERN1/
+mkdir -p /boot/5.15.65-rt49-v8+/o/
+cp -d /usr/lib/linux-image-5.15.65-rt49-v8+/overlays/* /boot/5.15.65-rt49-v8+/o/
+cp -dr /usr/lib/linux-image-5.15.65-rt49-v8+/* /boot/5.15.65-rt49-v8+/
+cp -d /usr/lib/linux-image-5.15.65-rt49-v8+/broadcom/* /boot/5.15.65-rt49-v8+/
+touch /boot/5.15.65-rt49-v8+/o/README
+mv /boot/vmlinuz-5.15.65-rt49-v8+ /boot/5.15.65-rt49-v8+/
+mv /boot/initrd.img-5.15.65-rt49-v8+ /boot/5.15.65-rt49-v8+/
+mv /boot/System.map-5.15.65-rt49-v8+ /boot/5.15.65-rt49-v8+/
+cp /boot/config-5.15.65-rt49-v8+ /boot/5.15.65-rt49-v8+/
 
 KERN2=6.1.54-rt15-v8+
-mkdir -p /boot/$KERN2/o/
-cp -d /usr/lib/linux-image-$KERN2/overlays/* /boot/$KERN2/o/
-cp -dr /usr/lib/linux-image-$KERN2/* /boot/$KERN2/
-cp -d /usr/lib/linux-image-$KERN2/broadcom/* /boot/$KERN2/
-touch /boot/$KERN2/o/README
-mv /boot/vmlinuz-$KERN2 /boot/$KERN2/
-mv /boot/initrd.img-$KERN2 /boot/$KERN2/
-mv /boot/System.map-$KERN2 /boot/$KERN2/
-cp /boot/config-$KERN2 /boot/$KERN2/
+mkdir -p /boot/6.1.54-rt15-v8+/o/
+cp -d /usr/lib/linux-image-6.1.54-rt15-v8+/overlays/* /boot/6.1.54-rt15-v8+/o/
+cp -dr /usr/lib/linux-image-6.1.54-rt15-v8+/* /boot/6.1.54-rt15-v8+/
+cp -d /usr/lib/linux-image-6.1.54-rt15-v8+/broadcom/* /boot/6.1.54-rt15-v8+/
+touch /boot/6.1.54-rt15-v8+/o/README
+mv /boot/vmlinuz-6.1.54-rt15-v8+ /boot/6.1.54-rt15-v8+/
+mv /boot/initrd.img-6.1.54-rt15-v8+ /boot/6.1.54-rt15-v8+/
+mv /boot/System.map-6.1.54-rt15-v8+ /boot/6.1.54-rt15-v8+/
+cp /boot/config-6.1.54-rt15-v8+ /boot/6.1.54-rt15-v8+/
 
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
@@ -73,9 +73,9 @@ EOF
 
 cat >> ${ROOTFS_DIR}/boot/config.txt << EOF
 [pi3]
-kernel=vmlinuz-$KERN1
-# initramfs initrd.img-$KERN1
-os_prefix=$KERN1/
+kernel=vmlinuz-5.15.65-rt49-v8+
+# initramfs initrd.img-5.15.65-rt49-v8+
+os_prefix=5.15.65-rt49-v8+/
 overlay_prefix=o/
 arm_64bit=1
 [pi3]
@@ -83,9 +83,9 @@ EOF
 
 cat >> ${ROOTFS_DIR}/boot/config.txt << EOF
 [pi4]
-kernel=vmlinuz-$KERN2
-# initramfs initrd.img-$KERN
-os_prefix=$KERN2/
+kernel=vmlinuz-6.1.54-rt15-v8+
+# initramfs initrd.img-6.1.54-rt15-v8+
+os_prefix=6.1.54-rt15-v8+/
 overlay_prefix=o/
 arm_64bit=1
 [pi4]
