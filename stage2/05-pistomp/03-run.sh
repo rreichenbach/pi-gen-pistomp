@@ -11,10 +11,18 @@ install -m 644 files/config_templates/default_config.yml ${ROOTFS_DIR}/home/${FI
 echo "Installing MOD software"
 on_chroot << EOF
 
-dpkg -i files/sys/linux-image-5.15.65-rt49-v8+_5.15.65-rt49-v8+-2_arm64.deb
-dpkg -i files/sys/linux-image-6.1.54-rt15-v8+_6.1.54-rt15-v8+-2_arm64.deb
-dpkg -i files/sys/linux-libc-dev_6.1.54-rt15-v8+-2_arm64.deb
-dpkg -i files/sys/linux-headers-6.1.54-rt15-v8+_6.1.54-rt15-v8+-2_arm64.deb
+mkdir -p /home/${FIRST_USER_NAME}/tmp
+cd /home/${FIRST_USER_NAME}/tmp
+
+wget https://github.com/kdoren/linux/releases/download/rpi_5.15.65-rt49/linux-image-5.15.65-rt49-v8+_5.15.65-1_arm64.deb
+wget https://github.com/kdoren/linux/releases/download/rpi_6.1.54-rt15/linux-headers-6.1.54-rt15-v8+_6.1.54-1_arm64.deb
+wget https://github.com/kdoren/linux/releases/download/rpi_6.1.54-rt15/linux-image-6.1.54-rt15-v8+_6.1.54-1_arm64.deb
+wget https://github.com/kdoren/linux/releases/download/rpi_6.1.54-rt15/linux-libc-dev_6.1.54-1_arm64.deb
+
+dpkg -i linux-image-5.15.65-rt49-v8+_5.15.65-1_arm64.deb
+dpkg -i linux-image-6.1.54-rt15-v8+_6.1.54-rt15-v8+-2_arm64.deb
+dpkg -i linux-libc-dev_6.1.54-rt15-v8+-2_arm64.deb
+dpkg -i linux-headers-6.1.54-rt15-v8+_6.1.54-rt15-v8+-2_arm64.deb
 
 KERN1=5.15.65-rt49-v8+
 mkdir -p /boot/$KERN1/o/
