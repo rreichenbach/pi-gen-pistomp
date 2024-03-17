@@ -46,8 +46,6 @@ mv /boot/initrd.img-6.1.54-rt15-v8+ /boot/6.1.54-rt15-v8+/
 mv /boot/System.map-6.1.54-rt15-v8+ /boot/6.1.54-rt15-v8+/
 cp /boot/config-6.1.54-rt15-v8+ /boot/6.1.54-rt15-v8+/
 
-echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-
 EOF
 
 sed -i 's/exit 0//' ${ROOTFS_DIR}/etc/rc.local
