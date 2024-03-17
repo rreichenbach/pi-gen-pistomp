@@ -4,8 +4,6 @@ install -m 644 files/services/*.service ${ROOTFS_DIR}/usr/lib/systemd/system/
 install -m 644 files/jackdrc ${ROOTFS_DIR}/etc/
 install -m 644 files/80 ${ROOTFS_DIR}/etc/authbind/byport/
 
-
-
 echo "Creating folders and services"
 on_chroot << EOF
 
@@ -13,7 +11,7 @@ mkdir -p /home/${FIRST_USER_NAME}/tmp
 cd /home/${FIRST_USER_NAME}/tmp
 
 wget https://www.treefallsound.com/downloads/lv2plugins.tar.gz
-tar -zxf files/lv2plugins.tar.gz -C /home/${FIRST_USER_NAME}/
+tar -zxf lv2plugins.tar.gz -C /home/${FIRST_USER_NAME}/
 cd ..
 
 git clone https://github.com/treefallsound/pi-stomp.git /home/${FIRST_USER_NAME}/pi-stomp
