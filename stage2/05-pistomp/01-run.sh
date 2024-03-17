@@ -44,6 +44,8 @@ adduser ${FIRST_USER_NAME} jack --quiet
 adduser root jack --quiet
 adduser jack audio --quiet
 
+git clone https://github.com/TreeFallSound/pi-stomp-pedalboards.git /home/${FIRST_USER_NAME}/data/.pedalboards
+
 ln -s /home/${FIRST_USER_NAME}/data/.pedalboards /home/${FIRST_USER_NAME}/.pedalboards
 ln -s /home/${FIRST_USER_NAME}/.lv2 /home/${FIRST_USER_NAME}/data/.lv2
 

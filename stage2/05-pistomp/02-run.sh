@@ -6,7 +6,7 @@ on_chroot << EOF
 mkdir -p /home/${FIRST_USER_NAME}/tmp
 cd /home/${FIRST_USER_NAME}/tmp
 
-git clone https://github.com/moddevices/jack2.git
+git clone https://github.com/micahvdm/jack2.git
 cd jack2
 ./waf configure
 ./waf build
@@ -18,7 +18,7 @@ cd browsepy
 pip3 install ./
 cd ..
 
-git clone https://github.com/moddevices/mod-host.git
+git clone https://github.com/micahvdm/mod-host.git
 cd mod-host
 make
 make install
@@ -31,7 +31,7 @@ cd utils
 make
 cd ..
 ./setup.py install
-cp -r default.pedalboard ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/data/.pedalboards
+cp -r default.pedalboard /home/${FIRST_USER_NAME}/data/.pedalboards
 cd ..
 
 git clone https://github.com/BlokasLabs/amidithru.git

@@ -1,4 +1,4 @@
-IMG_NAME='pistomp'
+IMG_NAME='pistompOS'
 LOCALE_DEFAULT="en_US.UTF-8"
 TARGET_HOSTNAME="pistomp"
 FIRST_USER_NAME="pistomp"
