@@ -50,14 +50,14 @@ EOF
 
 sed -i 's/exit 0//' ${ROOTFS_DIR}/etc/rc.local
 sed -i 's/console=serial0,115200//' ${ROOTFS_DIR}/boot/cmdline.txt
-sed -i \"s/^\s*dtparam=audio/#dtparam=audio/\" ${ROOTFS_DIR}/boot/config.txt
-sed -i \"s/^\s*hdmi_force_hotplug=/#hdmi_force_hotplug=/\" ${ROOTFS_DIR}/boot/config.txt
-sed -i \"s/^\s*camera_auto_detect=/#camera_auto_detect=/\" ${ROOTFS_DIR}/boot/config.txt
-sed -i \"s/^\s*display_auto_detect=/#display_auto_detect=/\" ${ROOTFS_DIR}/boot/config.txt
-sed -i \"s/^\s*dtoverlay=vc4-kms-v3d/#dtoverlay=vc4-kms-v3d/\" ${ROOTFS_DIR}/boot/config.txt
-sed -i \"s/^\s*#dtparam=spi=on/dtparam=spi=on/\" ${ROOTFS_DIR}/boot/config.txt
-sed -i \"s/^\s*#dtparam=i2s=on/dtparam=i2s=on/\" ${ROOTFS_DIR}/boot/config.txt
-sed -i \"s/^\s*#dtparam=i2c_arm=on/dtparam=i2c_arm=on/\" ${ROOTFS_DIR}/boot/config.txt
+bash -c "sed -i \"s/^\s*dtparam=audio/#dtparam=audio/\" ${ROOTFS_DIR}/boot/config.txt"
+bash -c "sed -i \"s/^\s*hdmi_force_hotplug=/#hdmi_force_hotplug=/\" ${ROOTFS_DIR}/boot/config.txt"
+bash -c "sed -i \"s/^\s*camera_auto_detect=/#camera_auto_detect=/\" ${ROOTFS_DIR}/boot/config.txt"
+bash -c "sed -i \"s/^\s*display_auto_detect=/#display_auto_detect=/\" ${ROOTFS_DIR}/boot/config.txt"
+bash -c "sed -i \"s/^\s*dtoverlay=vc4-kms-v3d/#dtoverlay=vc4-kms-v3d/\" ${ROOTFS_DIR}/boot/config.txt"
+bash -c "sed -i \"s/^\s*#dtparam=spi=on/dtparam=spi=on/\" ${ROOTFS_DIR}/boot/config.txt"
+bash -c "sed -i \"s/^\s*#dtparam=i2s=on/dtparam=i2s=on/\" ${ROOTFS_DIR}/boot/config.txt"
+bash -c "sed -i \"s/^\s*#dtparam=i2c_arm=on/dtparam=i2c_arm=on/\" ${ROOTFS_DIR}/boot/config.txt"
 
 cat >> ${ROOTFS_DIR}/boot/config.txt <<EOF
 
