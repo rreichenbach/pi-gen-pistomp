@@ -40,8 +40,9 @@ jobs:
     - name: Upload built image
       uses: actions/upload-artifact@v4
       with:
-        name: built-image
+        name: pistompOS
         path: ./deploy/image_*pistompOS-lite.zip
+        compression-level: 0
         if-no-files-found: error
 
     - name: Upload debug artifacts
@@ -51,6 +52,7 @@ jobs:
         path: | 
           ./deploy/*pistompOS-lite.info
           ./deploy/build.log
+        compression-level: 0
         if-no-files-found: error
   
   release:
@@ -60,7 +62,8 @@ jobs:
     steps:
       - uses: actions/upload-artifact@v4
         with:
-          name: built-image
+          name: pistompOS
+          compression-level: 0
       - uses: softprops/action-gh-release@v2
         with:
           files: '**/*'
