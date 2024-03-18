@@ -56,8 +56,5 @@ git clone https://github.com/TreeFallSound/pi-stomp-pedalboards.git /home/${FIRS
 ln -s /home/${FIRST_USER_NAME}/data/.pedalboards /home/${FIRST_USER_NAME}/.pedalboards
 ln -s /home/${FIRST_USER_NAME}/.lv2 /home/${FIRST_USER_NAME}/data/.lv2
 
-rm /home/${FIRST_USER_NAME}/data/.pedalboards LICENSE README.md
-rm -rf /home/${FIRST_USER_NAME}/data/.pedalboards/.git
-
 EOF
 
