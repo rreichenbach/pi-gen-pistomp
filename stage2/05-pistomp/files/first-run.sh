@@ -7,7 +7,7 @@ if [ ! -e ~/.config/pistomp-first-run ]; then
 	mkdir ~/.config
 	touch ~/.config/pistomp-first-run
 	sudo chmod +x /etc/update-motd.d/display-pistomp-logo
-    sudo chown -R pistomp:pistomp /home/pistomp
+        sudo chown -R pistomp:pistomp /home/pistomp
 	sudo chmod +x /etc/jackdrc
 	sudo chown jack:jack /etc/jackdrc
 	sudo chmod 500 /etc/authbind/byport/80
