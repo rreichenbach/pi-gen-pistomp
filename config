@@ -8,4 +8,4 @@ DISABLE_FIRST_BOOT_USER_RENAME=1
 WPA_COUNTRY=US
 PI_GEN=pi-gen-pistomp
 PI_GEN_REPO=https://github.com/micahvdm/pi-gen-pistomp
-DEPLOY_COMPRESSION=none
+DEPLOY_COMPRESSION="xz"
