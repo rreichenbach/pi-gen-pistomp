@@ -48,7 +48,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: pistompOS
-        path: ./deploy/image_*pistompOS-lite.img
+        path: ./deploy/*pistompOS-lite.img
         compression-level: 6
         if-no-files-found: error
 
@@ -65,7 +65,7 @@ jobs:
   release:
     if: startsWith(github.ref, 'refs/tags/')
     needs: [build]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/upload-artifact@v4
         with:
