@@ -61,14 +61,13 @@ jobs:
         if-no-files-found: error
   
   release:
+    if: startsWith(github.ref, 'refs/tags/')
     needs: [build]
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/upload-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: pistompOS
-          path: ./deploy/*pistompOS-lite.img.xz
-          compression-level: 6
       - uses: softprops/action-gh-release@v2
         with:
           files: '**/*'
