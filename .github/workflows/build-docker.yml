@@ -4,6 +4,8 @@ name: build-docker-new
 # events but only for the master branch
 on:
   workflow_dispatch:
+  release:
+    types: [published]
   push:
     paths:
       - 'stage2/**'
