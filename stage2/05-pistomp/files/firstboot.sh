@@ -23,7 +23,6 @@ sudo ln -sf /usr/lib/systemd/system/mod-midi-merger.service /etc/systemd/system/
 sudo ln -sf /usr/lib/systemd/system/mod-midi-merger-broadcaster.service /etc/systemd/system/multi-user.target.wants
 sudo ln -sf /usr/lib/systemd/system/mod-ala-pi-stomp.service /etc/systemd/system/multi-user.target.wants
 sudo raspi-config nonint do_boot_wait 1
-sudo echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 clear && cat /run/motd.dynamic
 sudo rm /etc/profile.d/bash_completion.sh
 
