@@ -24,6 +24,6 @@ sudo ln -sf /usr/lib/systemd/system/mod-ala-pi-stomp.service /etc/systemd/system
 sudo raspi-config nonint do_boot_wait 1
 clear && cat /run/motd.dynamic
 sudo rm /etc/profile.d/bash_completion.sh
-cd /home/pistomp/pi-stomp
-/setup/pi-stomp-tweaks/modify_version.sh 2.0
+cd /home/pistomp
+/home/pistomp/pi-stomp/setup/pi-stomp-tweaks/modify_version.sh 2.0
 sudo chown -R pistomp:pistomp /home/pistomp/data
