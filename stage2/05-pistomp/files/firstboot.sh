@@ -11,6 +11,7 @@ sudo chmod 500 /etc/authbind/byport/80
 sudo chown pistomp:pistomp /etc/authbind/byport/80
 sudo chown -R pistomp:pistomp /usr/lib/pistomp-wifi
 sudo chmod +x -R /usr/lib/pistomp-wifi
+cd /home/pistomp/pi-stomp
 /home/pistomp/pi-stomp/setup/pi-stomp-tweaks/modify_version.sh 2.0
 /home/pistomp/pi-stomp/util/change-audio-card.sh iqaudio-codec
 sudo ln -sf /usr/lib/systemd/system/browsepy.service /etc/systemd/system/multi-user.target.wants
