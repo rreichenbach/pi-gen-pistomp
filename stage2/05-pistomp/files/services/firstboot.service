@@ -5,8 +5,8 @@ ConditionFileNotEmpty=/boot/firstboot.sh
 
 [Service]
 ExecStart=/boot/firstboot.sh
-ExecStartPost=/bin/mv /boot/firstboot.sh /boot/firstboot.sh.done
-ExecStop=/usr/bin/sudo /usr/sbin/reboot
+ExecStartPost=/bin/mv /boot/firstboot.sh /boot/firstboot.sh.done && systemctl stop firstboot.service
+ExecStop=/usr/bin/sudo reboot
 Type=oneshot
 RemainAfterExit=no
 
