@@ -24,7 +24,7 @@ make
 make install
 cd ..
 
-git clone https://github.com/micahvdm/mod-ui.git
+git clone -b beta-bookworm-dev https://github.com/micahvdm/mod-ui.git
 cd mod-ui
 chmod +x setup.py
 cd utils
@@ -32,6 +32,7 @@ make
 cd ..
 ./setup.py install
 cp -r default.pedalboard /home/${FIRST_USER_NAME}/data/.pedalboards
+sed -i -e 's/collections.MutableMapping/collections.abc.MutableMapping/' /usr/local/lib/python3.11/dist-packages/tornado/httputil.py
 cd ..
 
 git clone https://github.com/BlokasLabs/amidithru.git
