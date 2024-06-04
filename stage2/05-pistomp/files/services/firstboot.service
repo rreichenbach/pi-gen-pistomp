@@ -1,0 +1,14 @@
+[Unit]
+Description=FirstBoot
+After=network.target apt-daily.service apt-daily-upgrade.service rc-local.service
+ConditionFileNotEmpty=/boot/firstboot.sh
+
+[Service]
+ExecStart=/boot/firstboot.sh
+ExecStartPost=/bin/mv /boot/firstboot.sh /boot/firstboot.sh.done && systemctl stop firstboot.service
+ExecStop=/usr/bin/sudo reboot
+Type=oneshot
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
