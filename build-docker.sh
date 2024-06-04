@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Note: Avoid usage of arrays as MacOS users have an older version of bash (v3.x) which does not supports arrays
 set -eu
 
