@@ -1,11 +1,11 @@
-ssh less fbset sudo git psmisc strace hardlink
+ssh less fbset sudo git psmisc strace
 console-setup keyboard-configuration debconf-utils parted
 build-essential manpages-dev bash-completion gdb pkg-config
 python-is-python3 python3-zeroconf python3-zeroconf
 python3-rpi.gpio v4l-utils
 python3-gpiozero python3-liblo
 avahi-daemon
-hardlink ca-certificates curl
+ca-certificates curl
 fake-hwclock nfs-common usbutils
 libraspberrypi-dev libraspberrypi-doc libfreetype6-dev
 dosfstools
