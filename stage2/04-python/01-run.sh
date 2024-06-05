@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-rm /usr/lib/python3.11/EXTERNALLY-MANAGED
-
 echo "Installing Python PIP packages"
 on_chroot << EOF
 
