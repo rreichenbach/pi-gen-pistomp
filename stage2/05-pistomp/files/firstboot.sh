@@ -21,7 +21,7 @@ sudo ln -sf /usr/lib/systemd/system/mod-touchosc2midi.service /etc/systemd/syste
 sudo ln -sf /usr/lib/systemd/system/mod-midi-merger.service /etc/systemd/system/multi-user.target.wants
 sudo ln -sf /usr/lib/systemd/system/mod-midi-merger-broadcaster.service /etc/systemd/system/multi-user.target.wants
 sudo ln -sf /usr/lib/systemd/system/mod-ala-pi-stomp.service /etc/systemd/system/multi-user.target.wants
-sudo raspi-config nonint do_boot_wait 1
+sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 clear && cat /run/motd.dynamic
 sudo rm /etc/profile.d/bash_completion.sh
 cd /home/pistomp
