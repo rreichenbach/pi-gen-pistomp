@@ -7,9 +7,9 @@ install -m 644 files/hotspot/etc/default/hostapd.pistomp ${ROOTFS_DIR}/etc/defau
 install -m 644 files/hotspot/etc/dnsmasq.d/wifi-hotspot.conf ${ROOTFS_DIR}/etc/dnsmasq.d/
 install -m 644 files/hotspot/etc/hostapd/hostapd.conf ${ROOTFS_DIR}/etc/hostapd/
 install -m 644 files/config_templates/default_config.yml ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/data/config/
-install -m 644 files/sys/linux-image-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-3_arm64.deb /home/${FIRST_USER_NAME}/tmp/
-install -m 644 files/sys/linux-libc-dev_6.6.31-ga2fb37fbc6cc-2_arm64.deb /home/${FIRST_USER_NAME}/tmp/
-install -m 644 files/sys/linux-headers-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-2_arm64.deb /home/${FIRST_USER_NAME}/tmp/
+install -m 644 files/sys/linux-image-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-3_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
+install -m 644 files/sys/linux-libc-dev_6.6.31-ga2fb37fbc6cc-2_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
+install -m 644 files/sys/linux-headers-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-2_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
 
 echo "Installing MOD software"
 on_chroot << EOF
