@@ -49,7 +49,6 @@ ln -sf /usr/lib/systemd/system/firstboot.service /etc/systemd/system/multi-user.
 
 adduser --no-create-home --system --group jack
 adduser ${FIRST_USER_NAME} jack --quiet
-adduser ${FIRST_USER_NAME} audio --quiet
 adduser root jack --quiet
 adduser jack audio --quiet
 
