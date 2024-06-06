@@ -7,31 +7,27 @@ install -m 644 files/hotspot/etc/default/hostapd.pistomp ${ROOTFS_DIR}/etc/defau
 install -m 644 files/hotspot/etc/dnsmasq.d/wifi-hotspot.conf ${ROOTFS_DIR}/etc/dnsmasq.d/
 install -m 644 files/hotspot/etc/hostapd/hostapd.conf ${ROOTFS_DIR}/etc/hostapd/
 install -m 644 files/config_templates/default_config.yml ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/data/config/
-install -m 644 files/sys/linux-image-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-3_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
-install -m 644 files/sys/linux-libc-dev_6.6.31-ga2fb37fbc6cc-2_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
-install -m 644 files/sys/linux-headers-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-2_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
+install -m 644 files/sys/linux-image-6.6.32-rt32-v8+_6.6.32-g5882bc5db17d-3_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
 
 echo "Installing MOD software"
 on_chroot << EOF
 
 cd /home/${FIRST_USER_NAME}/tmp
 
-dpkg -i linux-image-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-3_arm64.deb
-#dpkg -i linux-libc-dev_6.6.31-ga2fb37fbc6cc-2_arm64.deb
-dpkg -i linux-headers-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-2_arm64.deb
+dpkg -i linux-image-6.6.32-rt32-v8+_6.6.32-g5882bc5db17d-3_arm64.deb
 
 rm -rf /home/${FIRST_USER_NAME}/tmp
 
-KERN2=6.6.31-rt32-v8+
-mkdir -p /boot/firmware/6.6.31-rt32-v8+/o/
-cp -d /usr/lib/linux-image-6.6.31-rt32-v8+/overlays/* /boot/firmware/6.6.31-rt32-v8+/o/
-cp -dr /usr/lib/linux-image-6.6.31-rt32-v8+/* /boot/firmware/6.6.31-rt32-v8+/
-cp -d /usr/lib/linux-image-6.6.31-rt32-v8+/broadcom/* /boot/firmware/6.6.31-rt32-v8+/
-touch /boot/firmware/6.6.31-rt32-v8+/o/README
-mv /boot/vmlinuz-6.6.31-rt32-v8+ /boot/firmware/6.6.31-rt32-v8+/
-mv /boot/initrd.img-6.6.31-rt32-v8+ /boot/firmware/6.6.31-rt32-v8+/
-mv /boot/System.map-6.6.31-rt32-v8+ /boot/firmware/6.6.31-rt32-v8+/
-cp /boot/config-6.6.31-rt32-v8+ /boot/firmware/6.6.31-rt32-v8+/
+KERN2=6.6.32-rt32-v8+
+mkdir -p /boot/firmware/6.6.32-rt32-v8+/o/
+cp -d /usr/lib/linux-image-6.6.32-rt32-v8+/overlays/* /boot/firmware/6.6.32-rt32-v8+/o/
+cp -dr /usr/lib/linux-image-6.6.32-rt32-v8+/* /boot/firmware/6.6.32-rt32-v8+/
+cp -d /usr/lib/linux-image-6.6.32-rt32-v8+/broadcom/* /boot/firmware/6.6.32-rt32-v8+/
+touch /boot/firmware/6.6.32-rt32-v8+/o/README
+mv /boot/vmlinuz-6.6.32-rt32-v8+ /boot/firmware/6.6.32-rt32-v8+/
+mv /boot/initrd.img-6.6.32-rt32-v8+ /boot/firmware/6.6.32-rt32-v8+/
+mv /boot/System.map-6.6.32-rt32-v8+ /boot/firmware/6.6.32-rt32-v8+/
+cp /boot/config-6.6.32-rt32-v8+ /boot/firmware/6.6.32-rt32-v8+/
 
 EOF
 
@@ -64,9 +60,9 @@ EOF
 
 cat >> ${ROOTFS_DIR}/boot/firmware/config.txt << EOF
 [all]
-kernel=vmlinuz-6.6.31-rt32-v8+
-# initramfs initrd.img-6.6.31-rt32-v8+
-os_prefix=6.6.31-rt32-v8+/
+kernel=vmlinuz-6.6.32-rt32-v8+
+# initramfs initrd.img-6.6.32-rt32-v8+
+os_prefix=6.6.32-rt32-v8+/
 overlay_prefix=o/
 arm_64bit=1
 [all]
