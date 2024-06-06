@@ -4,9 +4,7 @@ After=network.target apt-daily.service apt-daily-upgrade.service rc-local.servic
 ConditionFileNotEmpty=/boot/firmware/firstboot.sh
 
 [Service]
-ExecStartPre=/bin/sh /boot/firmware/firstboot.sh
-ExecStart=/bin/mv /boot/firmware/firstboot.sh /boot/firmware/firstboot.sh.done && systemctl stop firstboot.service systemctl disable firstboot.service
-ExecStartPost=/bin/sh /boot/firmware/reboot.sh
+ExecStart=/bin/sh /boot/firmware/firstboot.sh
 Type=oneshot
 RemainAfterExit=no
 
