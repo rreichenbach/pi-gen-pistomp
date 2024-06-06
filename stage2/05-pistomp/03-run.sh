@@ -14,14 +14,11 @@ install -m 644 files/sys/linux-headers-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-2_ar
 echo "Installing MOD software"
 on_chroot << EOF
 
-mkdir -p /home/${FIRST_USER_NAME}/tmp
 cd /home/${FIRST_USER_NAME}/tmp
 
 dpkg -i linux-image-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-3_arm64.deb
 dpkg -i linux-libc-dev_6.6.31-ga2fb37fbc6cc-2_arm64.deb
 dpkg -i linux-headers-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-2_arm64.deb
-
-rm -rf /home/${FIRST_USER_NAME}/tmp
 
 KERN2=6.6.31-rt32-v8+
 mkdir -p /boot/firmware/6.6.31-rt32-v8+/o/
