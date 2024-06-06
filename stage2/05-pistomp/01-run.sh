@@ -14,7 +14,7 @@ wget https://www.treefallsound.com/downloads/lv2plugins.tar.gz
 tar -zxf lv2plugins.tar.gz -C /home/${FIRST_USER_NAME}/
 cd ..
 
-git clone https://github.com/treefallsound/pi-stomp.git /home/${FIRST_USER_NAME}/pi-stomp
+git clone -b beta-bookworm-dev https://github.com/treefallsound/pi-stomp.git /home/${FIRST_USER_NAME}/pi-stomp
 
 mkdir -p /home/${FIRST_USER_NAME}/data/.pedalboards
 mkdir -p /home/${FIRST_USER_NAME}/data/user-files
