@@ -27,3 +27,5 @@ sudo rm /etc/profile.d/bash_completion.sh
 cd /home/pistomp
 pi-stomp/setup/pi-stomp-tweaks/modify_version.sh 2.0
 sudo chown -R pistomp:pistomp /home/pistomp/data
+sudo mv "$0" firstboot.done
+sudo reboot
