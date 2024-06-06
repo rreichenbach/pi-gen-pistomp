@@ -20,6 +20,8 @@ dpkg -i linux-image-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-3_arm64.deb
 dpkg -i linux-libc-dev_6.6.31-ga2fb37fbc6cc-2_arm64.deb
 dpkg -i linux-headers-6.6.31-rt32-v8+_6.6.31-ga2fb37fbc6cc-2_arm64.deb
 
+rm -rf /home/${FIRST_USER_NAME}/tmp
+
 KERN2=6.6.31-rt32-v8+
 mkdir -p /boot/firmware/6.6.31-rt32-v8+/o/
 cp -d /usr/lib/linux-image-6.6.31-rt32-v8+/overlays/* /boot/firmware/6.6.31-rt32-v8+/o/
