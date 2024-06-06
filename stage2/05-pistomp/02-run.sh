@@ -24,7 +24,7 @@ make
 make install
 cd ..
 
-git clone -b beta-bookworm-dev https://github.com/micahvdm/mod-ui.git
+git clone https://github.com/micahvdm/mod-ui.git
 cd mod-ui
 chmod +x setup.py
 cd utils
