@@ -45,7 +45,6 @@ ln -sf /usr/lib/systemd/system/mod-touchosc2midi.service /etc/systemd/system/mul
 ln -sf /usr/lib/systemd/system/mod-midi-merger.service /etc/systemd/system/multi-user.target.wants
 ln -sf /usr/lib/systemd/system/mod-midi-merger-broadcaster.service /etc/systemd/system/multi-user.target.wants
 ln -sf /usr/lib/systemd/system/mod-ala-pi-stomp.service /etc/systemd/system/multi-user.target.wants
-ln -sf /usr/lib/systemd/system/firstboot.service /etc/systemd/system/multi-user.target.wants
 
 adduser --no-create-home --system --group jack
 adduser ${FIRST_USER_NAME} jack --quiet
