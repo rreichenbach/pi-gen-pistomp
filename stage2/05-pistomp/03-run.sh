@@ -8,14 +8,14 @@ install -m 644 files/hotspot/etc/dnsmasq.d/wifi-hotspot.conf ${ROOTFS_DIR}/etc/d
 install -m 644 files/hotspot/etc/hostapd/hostapd.conf ${ROOTFS_DIR}/etc/hostapd/
 install -m 644 files/config_templates/default_config.yml ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/data/config/
 install -m 644 files/config_templates/default-hardware-descriptor.json ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/data/config/
-install -m 644 files/sys/linux-image-6.6.32-rt32-v8+_6.6.32-g5882bc5db17d-3_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
+install -m 644 files/sys/linux-image-6.6.32-rt32-v8+_6.6.32-gbe8498ee21aa-3_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
 
 echo "Installing MOD software"
 on_chroot << EOF
 
 cd /home/${FIRST_USER_NAME}/tmp
 
-dpkg -i linux-image-6.6.32-rt32-v8+_6.6.32-g5882bc5db17d-3_arm64.deb
+dpkg -i linux-image-6.6.32-rt32-v8+_6.6.32-gbe8498ee21aa-3_arm64.deb
 
 rm -rf /home/${FIRST_USER_NAME}/tmp
 
