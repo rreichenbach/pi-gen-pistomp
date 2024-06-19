@@ -9,8 +9,6 @@ pigpio python3-pigpio raspi-gpio python3-rpi.gpio
 python3-spidev
 python3-smbus2
 avahi-daemon
-lua5.1
-luajit
 ca-certificates curl
 fake-hwclock nfs-common usbutils
 dosfstools
@@ -37,3 +35,15 @@ unzip zip p7zip-full
 file
 kms++-utils
 python3-venv
+virtualenv python3-pip python3-dev
+libasound2-dev libjack-jackd2-dev liblilv-dev 
+libjpeg-dev zlib1g-dev cmake debhelper dh-autoreconf dh-python 
+gperf intltool ladspa-sdk libarmadillo-dev libasound2-dev 
+libavahi-gobject-dev libavcodec-dev libavutil-dev libbluetooth-dev 
+libboost-dev libeigen3-dev libfftw3-dev libglib2.0-dev libglibmm-2.4-dev 
+libgtk2.0-dev libgtkmm-2.4-dev liblilv-dev liblrdf0-dev libsamplerate0-dev 
+libsigc++-2.0-dev libsndfile1-dev libsndfile1-dev libzita-convolver-dev 
+libzita-resampler-dev lv2-dev python3-all python3-setuptools 
+libreadline-dev zita-alsa-pcmi-utils hostapd dnsmasq iptables python3-smbus 
+liblo-dev libzita-alsa-pcmi-dev authbind python3-numpy
+libserd-dev libsord-dev libsratom-dev rcconf python3-zeroconf
