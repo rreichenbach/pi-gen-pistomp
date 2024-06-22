@@ -6,6 +6,13 @@ on_chroot << EOF
 mkdir -p /home/${FIRST_USER_NAME}/tmp
 cd /home/${FIRST_USER_NAME}/tmp
 
+export NOOPT=true
+git clone --recursive https://github.com/falkTX/Hylia.git
+cd Hylia
+make
+make install
+cd ..
+
 git clone https://github.com/micahvdm/jack2.git
 cd jack2
 ./waf configure
