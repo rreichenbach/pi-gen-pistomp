@@ -7,6 +7,7 @@ install -m 666 files/80 ${ROOTFS_DIR}/etc/authbind/byport/
 echo "Creating folders and services"
 on_chroot << EOF
 
+mkdir -p /usr/lib/pistomp-wifi/
 mkdir -p /home/${FIRST_USER_NAME}/tmp
 cd /home/${FIRST_USER_NAME}/tmp
 
