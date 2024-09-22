@@ -1,0 +1,68 @@
+#!/bin/bash
+
+echo "pi-Stomp files"
+
+# TODO move logo to pi-stomp repo
+install -m 666 files/display-pistomp-logo ${ROOTFS_DIR}/etc/update-motd.d/
+chmod +x ${ROOTFS_DIR}/etc/update-motd.d/display-pistomp-logo
+
+on_chroot << EOF
+
+# pi-Stomp code
+git clone -b beta-bookworm-dev https://github.com/treefallsound/pi-stomp.git /home/${FIRST_USER_NAME}/pi-stomp
+
+# data dir
+mkdir -p /home/${FIRST_USER_NAME}/data/user-files
+mkdir -p /home/${FIRST_USER_NAME}/data/config
+mkdir -p /usr/mod/scripts
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Speaker Cabinets IRs"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Reverb IRs"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Audio Loops"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Audio Recordings"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Audio Samples"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Audio Tracks"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/MIDI Clips"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/MIDI Songs"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Hydrogen Drumkits"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/SF2 Instruments"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/SFZ Instruments"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Amplifier Profiles"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/Aida DSP Models"
+mkdir -p "/home/${FIRST_USER_NAME}/data/user-files/NAM Models"
+
+install -m 644 /home/${FIRST_USER_NAME}/pi-stomp/setup/config_templates/default_config.yml /home/${FIRST_USER_NAME}/data/config/
+install -m 644 /home/${FIRST_USER_NAME}/pi-stomp/setup/config_templates/default-hardware-descriptor.json /home/${FIRST_USER_NAME}/data/config/
+
+# Pedalboards
+rm -rf /home/${FIRST_USER_NAME}/data/.pedalboards
+git clone https://github.com/TreeFallSound/pi-stomp-pedalboards.git /home/${FIRST_USER_NAME}/data/.pedalboards
+ln -s /home/${FIRST_USER_NAME}/data/.pedalboards /home/${FIRST_USER_NAME}/.pedalboards
+
+# Services
+ln -sf /usr/lib/systemd/system/mod-ala-pi-stomp.service /etc/systemd/system/multi-user.target.wants
+
+mkdir -p /usr/lib/pistomp-wifi
+chown -R ${FIRST_USER_NAME}:${FIRST_USER_NAME} /usr/lib/pistomp-wifi
+chmod +x -R /usr/lib/pistomp-wifi
+install -m 666 /home/${FIRST_USER_NAME}/pi-stomp/setup/services/hotspot/usr/lib/pistomp-wifi/disable_wifi_hotspot.sh /usr/lib/pistomp-wifi
+install -m 666 /home/${FIRST_USER_NAME}/pi-stomp/setup/services/hotspot/usr/lib/pistomp-wifi/enable_wifi_hotspot.sh /usr/lib/pistomp-wifi
+install -m 666 /home/${FIRST_USER_NAME}/pi-stomp/setup/services/wifi_check.sh /usr/lib/pistomp-wifi
+install -m 666 /home/${FIRST_USER_NAME}/pi-stomp/setup/services/hotspot/usr/lib/systemd/system/wifi-hotspot.service /usr/lib/systemd/system
+
+# Plugins
+mkdir -p /home/${FIRST_USER_NAME}/tmp
+pushd /home/${FIRST_USER_NAME}/tmp
+wget https://www.treefallsound.com/downloads/lv2plugins.tar.gz
+tar -zxf lv2plugins.tar.gz -C /home/${FIRST_USER_NAME}/
+ln -s /home/${FIRST_USER_NAME}/.lv2 /home/${FIRST_USER_NAME}/data/.lv2
+popd
+
+EOF
+
+# rc.local
+bash -c "sed -i 's/exit 0//' ${ROOTFS_DIR}/etc/rc.local"
+cat >> ${ROOTFS_DIR}/etc/rc.local <<EOF
+sudo alsactl restore -f /var/lib/alsa/asound.state
+(sleep 10;/usr/lib/pistomp-wifi/wifi_check.sh) &
+exit 0
+EOF

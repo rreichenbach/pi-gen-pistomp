@@ -3,7 +3,7 @@
 echo "Installing Python PIP packages"
 on_chroot << EOF
 
-rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED
 
 pip3 install pyserial==3.0 pystache==0.5.4 aggdraw==1.3.11 scandir backports.shutil-get-terminal-size
 pip3 install pycryptodomex
