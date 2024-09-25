@@ -1,8 +1,8 @@
 #!/bin/bash
 
-install -m 666 files/services/*.service ${ROOTFS_DIR}/usr/lib/systemd/system/
-install -m 666 files/jackdrc ${ROOTFS_DIR}/etc/
-install -m 666 files/80 ${ROOTFS_DIR}/etc/authbind/byport/
+install -m 644 files/services/*.service ${ROOTFS_DIR}/usr/lib/systemd/system/
+install -m 644 files/jackdrc ${ROOTFS_DIR}/etc/
+install -m 500 files/80 ${ROOTFS_DIR}/etc/authbind/byport/
 
 echo "Creating folders and services"
 on_chroot << EOF

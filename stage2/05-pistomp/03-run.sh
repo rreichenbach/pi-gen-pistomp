@@ -39,11 +39,3 @@ EOF
 # Boot files
 bash -c "sed -i 's/console=serial0,115200//' ${ROOTFS_DIR}/boot/firmware/cmdline.txt"
 install -m 644 files/config_pistomp.txt ${ROOTFS_DIR}/boot/firmware
-
-# TODO remove this (moved to stage3)
-#bash -c "sed -i 's/exit 0//' ${ROOTFS_DIR}/etc/rc.local"
-#cat >> ${ROOTFS_DIR}/etc/rc.local <<EOF
-#sudo alsactl restore -f /var/lib/alsa/asound.state
-#(sleep 10;/usr/lib/pistomp-wifi/wifi_check.sh) &
-#exit 0
-#EOF
