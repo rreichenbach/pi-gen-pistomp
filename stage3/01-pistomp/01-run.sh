@@ -50,6 +50,9 @@ install -m 755 /home/${FIRST_USER_NAME}/pi-stomp/setup/services/wifi_check.sh /u
 install -m 644 /home/${FIRST_USER_NAME}/pi-stomp/setup/services/hotspot/usr/lib/systemd/system/wifi-hotspot.service /usr/lib/systemd/system
 chown -R ${FIRST_USER_NAME}:${FIRST_USER_NAME} /usr/lib/pistomp-wifi
 
+# USB automounter
+sudo dpkg -i /home/${FIRST_USER_NAME}/pi-stomp/setup/services/usbmount.deb
+
 # Plugins
 mkdir -p /home/${FIRST_USER_NAME}/tmp
 pushd /home/${FIRST_USER_NAME}/tmp
@@ -63,7 +66,14 @@ EOF
 # rc.local
 bash -c "sed -i 's/exit 0//' ${ROOTFS_DIR}/etc/rc.local"
 cat >> ${ROOTFS_DIR}/etc/rc.local <<EOF
-sudo alsactl restore -f /var/lib/alsa/asound.state
+logger --priority info --tag rc.local "rc.local start..."
+sudo iw dev wlan0 set power_save off
+if test -f "/var/lib/alsa/asound.state"
+then
+    logger --priority info --tag rc.local "restoring asound.state"
+    sudo alsactl --no-ucm restore -f /var/lib/alsa/asound.state
+fi
 (sleep 10;/usr/lib/pistomp-wifi/wifi_check.sh) &
+logger --priority info --tag rc.local "rc.local completed successfully"
 exit 0
 EOF
