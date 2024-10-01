@@ -1,14 +1,11 @@
 #!/bin/bash -e
 
 install -m 644 files/sys/.bash_aliases ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/
-# TODO still need hotspot scripts?
-install -m 644 files/hotspot/etc/default/hostapd.pistomp ${ROOTFS_DIR}/etc/default/
-install -m 644 files/hotspot/etc/dnsmasq.d/wifi-hotspot.conf ${ROOTFS_DIR}/etc/dnsmasq.d/
-install -m 644 files/hotspot/etc/hostapd/hostapd.conf ${ROOTFS_DIR}/etc/hostapd/
 install -m 644 files/sys/linux-image-6.1.54-rt15-v8+_6.1.54-rt15-v8+-2_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
 install -m 644 files/sys/linux-headers-6.1.54-rt15-v8+_6.1.54-rt15-v8+-2_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
 install -m 644 files/sys/linux-libc-dev_6.1.54-rt15-v8+-2_arm64.deb ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
 install -m 644 files/advertise.diff ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
+install -m 644 files/NetworkManager.conf.diff ${ROOTFS_DIR}/home/${FIRST_USER_NAME}/tmp/
 
 echo "Installing Kernel and boot files"
 on_chroot << EOF
@@ -16,6 +13,8 @@ on_chroot << EOF
 cd /home/${FIRST_USER_NAME}/tmp
 
 patch -b -N -u /usr/local/lib/python3.11/dist-packages/touchosc2midi/advertise.py -i advertise.diff
+
+patch -b -N -u /etc/NetworkManager/NetworkManager.conf -i NetworkManager.conf.diff
 
 dpkg -i linux-headers-6.1.54-rt15-v8+_6.1.54-rt15-v8+-2_arm64.deb
 dpkg -i linux-libc-dev_6.1.54-rt15-v8+-2_arm64.deb
