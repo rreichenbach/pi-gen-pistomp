@@ -60,6 +60,7 @@ wget https://www.treefallsound.com/downloads/lv2plugins.tar.gz
 tar -zxf lv2plugins.tar.gz -C /home/${FIRST_USER_NAME}/
 ln -s /home/${FIRST_USER_NAME}/.lv2 /home/${FIRST_USER_NAME}/data/.lv2
 popd
+rm -rf /home/${FIRST_USER_NAME}/tmp
 
 EOF
 
@@ -77,3 +78,10 @@ fi
 logger --priority info --tag rc.local "rc.local completed successfully"
 exit 0
 EOF
+
+# Version info
+software_version=$(sudo git --work-tree ${ROOTFS_DIR}/home/pistomp/pi-stomp --git-dir ${ROOTFS_DIR}/home/pistomp/pi-stomp/.git describe --dirty="*" --always)
+build_tag=$(git --work-tree $BASE_DIR --git-dir $BASE_DIR/.git describe --dirty="*" --always)
+build_date=$(date +"%y%m%d")
+printf '{"build-tag": "%s", "build-date": "%s", "software-version": "%s"}' $build_tag $build_date $software_version > ${ROOTFS_DIR}/home/pistomp/.osbuild
+
